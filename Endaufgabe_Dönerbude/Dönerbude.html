@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="TypeScript/Main.js"></script>
+    <title>Dönerbude</title>
+</head>
+<body>
+    <h1 id="firstHeadline">Dönerbude Gamesettings</h1>
+
+    <Form id="formElement">
+        <div id="form">
+
+            <fieldset>
+                <legend>Mitarbeiter</legend>
+                    <br>
+                    <input type="number" name="stepper" id="staff" value="2" step="1" min="1" max="7" >
+            </fieldset>
+
+            <fieldset>
+                <legend>Kunden pro Stunde</legend>
+                    <br>
+                    <input type="range" name="customer" min="1" max="7" step="1">
+            </fieldset>
+
+            <fieldset>
+                <legend>Lagerkapazitäten</legend>
+                    <br>
+                    <label for="lowSupply">low</label>
+                    <input type="radio" name="Radiogroup" id="lowSupply" value="lowSupply">
+
+                    <label for="mediumSupply">medium</label>
+                    <input type="radio" name="Radiogroup" id="mediumSupply" value="mediumSupply">
+
+                    <label for="highSupply">high</label>
+                    <input type="radio" name="Radiogroup" id="highSupply" value="highSupply">
+            </fieldset>
+
+            <fieldset>
+                <legend>Stressresistenz</legend>
+                <br>
+                <input type="range" name="stress" min="1" max="10" step="1">
+                    
+            </fieldset>
+
+            <br>
+
+            <button id="startButton">Start</button>
+            
+        </div>
+    </Form>
+    
+</body>
+</html>
