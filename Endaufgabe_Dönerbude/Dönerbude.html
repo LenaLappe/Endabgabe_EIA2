@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Stylesheet.css">
+    <script src="TypeScript/Movable.js"></script>
+    <script src="TypeScript/Drawable.js"></script>
+    <script src="TypeScript/Vector.js"></script>
+    <script src="TypeScript/Food.js"></script>
+    <script src="TypeScript/Customer.js"></script>
+    <script src="TypeScript/Staff.js"></script>
     <script src="TypeScript/Main.js"></script>
     <title>Dönerbude</title>
 </head>
@@ -22,7 +29,7 @@
             <fieldset>
                 <legend>Kunden pro Stunde</legend>
                     <br>
-                    <input type="range" name="customer" min="1" max="7" step="1">
+                    <input type="range" name="customer" min="1" max="10" step="1">
             </fieldset>
 
             <fieldset>
@@ -51,6 +58,8 @@
             
         </div>
     </Form>
+
+    <Canvas id="canvas" width="1300" height="600" class="is-hidden"></Canvas>
     
 </body>
 </html>

@@ -1,15 +1,17 @@
 namespace Endabgabe{
 
-    let globalFormData: FormData;
-    let canvas: HTMLCanvasElement;
     let crc2: CanvasRenderingContext2D;
 
 
     window.addEventListener("load", handleLoad);
 
     function handleLoad(_event: Event): void {
-        console.log("hallo");
-        // let fieldsets: NodeListOf<HTMLFieldSetElement> = document.querySelectorAll("fieldset");
+        let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
+
+        if (!canvas)
+            return;
+
+        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
         let form: HTMLElement = <HTMLElement>document.querySelector("div#form");
         form.addEventListener("change", handleChange);
@@ -27,14 +29,32 @@ namespace Endabgabe{
             let values: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[0] + "']");
             console.log(values);
         }
-        globalFormData = formData;
+        
     }
 
     function createGamefield(_event: MouseEvent): void {
         document.getElementById("firstHeadline")!.remove();
         document.getElementById("formElement")!.remove();
-        canvas = document.createElement("canvas");
+        console.log("hallo");
+
+        document.querySelector("#canvas")?.classList.remove("is-hidden");
+
+        //draw kitchen
+        crc2.beginPath()
+        crc2.fillStyle = "lightgrey"
+        crc2.closePath()
+        crc2.fillRect(0, 0, crc2.canvas.width, 200);
+
+        //draw Theke
+        crc2.beginPath()
+        moveTo(0, 500)
+        crc2.fillStyle = "lightblue"
+        crc2.fillRect(300, 330, crc2.canvas.width, 100);
+        crc2.closePath()
+        
+       
     }
+
 
 
 }
