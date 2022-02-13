@@ -1,13 +1,19 @@
 namespace Endabgabe{
 
     export class Customer extends Drawable implements Movable {
+        static forward: boolean = true;
+        static baseSpeed: number = 2;
         currentMood: MoodCustomer;
         request: Zutat;
         givenFood: Zutat;
+        canvasWidth: number;
+        canvasHeight: number;
 
-        constructor () {
+        constructor (_canvasWidth: number, _canvasHeight: number) {
             super();
-            this.position = new Vector(800, 700);
+            this.position = new Vector(1000, 900);
+            this.canvasWidth = _canvasWidth;
+            this.canvasHeight = _canvasHeight;
         }
 
         public draw(): void {
@@ -31,12 +37,21 @@ namespace Endabgabe{
         }
 
         public move(): void {
+            this.position.x += Customer.baseSpeed;
+            this.position.y += Customer.baseSpeed;
+
+            if (Customer.forward && this.position.y == 400) {
+                this.position.x = 0;
+            }
+            
 
         }
 
-        private compareFood (givenFood:Zutat, request: Zutat): void {
+        // private compareFood (givenFood:Zutat, request: Zutat): void {
 
-        }
+        // }
+    
+
     }
-
+    
 }

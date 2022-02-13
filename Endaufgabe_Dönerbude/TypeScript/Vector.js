@@ -3,7 +3,6 @@ var Endabgabe;
 (function (Endabgabe) {
     class Vector {
         constructor(_x, _y) {
-            console.log("constructor");
             this.x = _x;
             this.y = _y;
         }

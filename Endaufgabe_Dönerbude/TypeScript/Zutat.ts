@@ -8,7 +8,9 @@ namespace Endabgabe{
         Tomate,
         Mais,
         Sauce,
-        Scharf
+        Scharf,
+
+        _LENGTH,
     }
 
 }

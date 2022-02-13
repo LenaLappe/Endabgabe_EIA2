@@ -5,6 +5,8 @@ var Endabgabe;
     let background;
     let crc2;
     let drawables = [];
+    let containers = [];
+    let people = [];
     function handleLoad(_event) {
         let canvas = document.querySelector("canvas");
         if (!canvas)
@@ -12,7 +14,8 @@ var Endabgabe;
         crc2 = canvas.getContext("2d");
         drawables = [
             new Endabgabe.Staff(),
-            new Endabgabe.Customer(),
+            new Endabgabe.Customer(400, 350),
+            new Endabgabe.Container(),
         ];
         let form = document.querySelector("div#form");
         form.addEventListener("change", handleChange);
@@ -38,12 +41,21 @@ var Endabgabe;
         document.querySelector("#canvas")?.classList.remove("is-hidden");
     }
     function drawBackground() {
+        //draw Floor
+        crc2.beginPath();
+        crc2.fillStyle = "beige";
+        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.width);
+        crc2.closePath();
         //draw kitchen
+        crc2.beginPath();
         crc2.fillStyle = "lightgrey";
         crc2.fillRect(0, 0, crc2.canvas.width, 200);
+        crc2.closePath();
         //draw Theke
+        crc2.beginPath();
         crc2.fillStyle = "lightblue";
         crc2.fillRect(300, 330, crc2.canvas.width, 100);
+        crc2.closePath();
         background = crc2.getImageData(0, 0, 1300, 800);
     }
     function update() {

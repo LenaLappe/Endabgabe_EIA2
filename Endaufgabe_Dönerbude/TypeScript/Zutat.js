@@ -11,6 +11,7 @@ var Endabgabe;
         Zutat[Zutat["Mais"] = 5] = "Mais";
         Zutat[Zutat["Sauce"] = 6] = "Sauce";
         Zutat[Zutat["Scharf"] = 7] = "Scharf";
+        Zutat[Zutat["_LENGTH"] = 8] = "_LENGTH";
     })(Zutat = Endabgabe.Zutat || (Endabgabe.Zutat = {}));
 })(Endabgabe || (Endabgabe = {}));
 //# sourceMappingURL=Zutat.js.map

@@ -5,7 +5,6 @@ namespace Endabgabe{
         y: number;
 
         constructor(_x: number, _y: number) {
-            console.log("constructor");
             this.x = _x;
             this.y = _y;
         }

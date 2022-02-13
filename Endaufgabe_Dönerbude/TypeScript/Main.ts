@@ -5,6 +5,8 @@ namespace Endabgabe{
     let background: ImageData;
     let crc2: CanvasRenderingContext2D;
     let drawables: Array<Drawable & Movable> = []
+    let containers = []
+    let people: Array<Drawable & Movable> = []
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -16,9 +18,11 @@ namespace Endabgabe{
 
         drawables = [        
             new Staff(),
-            new Customer(),
+            new Customer(400, 350),
+            new Container(),
         ];
 
+        
         let form: HTMLElement = <HTMLElement>document.querySelector("div#form");
         form.addEventListener("change", handleChange);
 
@@ -51,13 +55,24 @@ namespace Endabgabe{
     }
 
     function drawBackground(): void {
+          //draw Floor
+          crc2.beginPath()
+          crc2.fillStyle = "beige"
+          crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.width);
+          crc2.closePath()
+
           //draw kitchen
+          crc2.beginPath()
           crc2.fillStyle = "lightgrey"
           crc2.fillRect(0, 0, crc2.canvas.width, 200);
+          crc2.closePath()
   
           //draw Theke
+          crc2.beginPath()
           crc2.fillStyle = "lightblue"
           crc2.fillRect(300, 330, crc2.canvas.width, 100);
+          crc2.closePath()
+
 
           background = crc2.getImageData(0, 0, 1300, 800);
     }
