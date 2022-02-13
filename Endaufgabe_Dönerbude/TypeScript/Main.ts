@@ -1,9 +1,10 @@
 namespace Endabgabe{
 
-    let crc2: CanvasRenderingContext2D;
-
-
     window.addEventListener("load", handleLoad);
+
+    let background: ImageData;
+    let crc2: CanvasRenderingContext2D;
+    let drawables: Array<Drawable & Movable> = []
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -13,11 +14,20 @@ namespace Endabgabe{
 
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
+        drawables = [        
+            new Staff(),
+            new Customer(),
+        ];
+
         let form: HTMLElement = <HTMLElement>document.querySelector("div#form");
         form.addEventListener("change", handleChange);
 
         let startButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button#startButton");
-        startButton.addEventListener("click", createGamefield);
+        startButton.addEventListener("click", removeForm);
+
+        drawBackground();
+        background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
+        window.setInterval(update, 50);
     }
 
     function handleChange(_event: Event): void {
@@ -32,27 +42,34 @@ namespace Endabgabe{
         
     }
 
-    function createGamefield(_event: MouseEvent): void {
+    function removeForm(_event: MouseEvent): void {
         document.getElementById("firstHeadline")!.remove();
         document.getElementById("formElement")!.remove();
         console.log("hallo");
 
-        document.querySelector("#canvas")?.classList.remove("is-hidden");
+        document.querySelector("#canvas")?.classList.remove("is-hidden");  
+    }
 
-        //draw kitchen
-        crc2.beginPath()
-        crc2.fillStyle = "lightgrey"
-        crc2.closePath()
-        crc2.fillRect(0, 0, crc2.canvas.width, 200);
+    function drawBackground(): void {
+          //draw kitchen
+          crc2.fillStyle = "lightgrey"
+          crc2.fillRect(0, 0, crc2.canvas.width, 200);
+  
+          //draw Theke
+          crc2.fillStyle = "lightblue"
+          crc2.fillRect(300, 330, crc2.canvas.width, 100);
 
-        //draw Theke
-        crc2.beginPath()
-        moveTo(0, 500)
-        crc2.fillStyle = "lightblue"
-        crc2.fillRect(300, 330, crc2.canvas.width, 100);
-        crc2.closePath()
-        
-       
+          background = crc2.getImageData(0, 0, 1300, 800);
+    }
+
+    function update(): void {
+        crc2.putImageData(background, 0, 0);
+ 
+        for (let drawable of drawables) {
+            drawable.move();
+            drawable.draw();
+        }
+
     }
 
 

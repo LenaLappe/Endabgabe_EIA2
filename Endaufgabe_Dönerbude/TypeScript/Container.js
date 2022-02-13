@@ -5,11 +5,11 @@ var Endabgabe;
         constructor() {
             super();
         }
-        draw(crc2) {
+        draw() {
         }
         move() {
         }
     }
     Endabgabe.Container = Container;
 })(Endabgabe || (Endabgabe = {}));
-//# sourceMappingURL=Food.js.map
+//# sourceMappingURL=Container.js.map

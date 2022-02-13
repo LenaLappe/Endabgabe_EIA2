@@ -4,17 +4,19 @@ var Endabgabe;
     class Staff extends Endabgabe.Drawable {
         constructor() {
             super();
+            this.position = new Endabgabe.Vector(150, 100);
         }
-        draw(crc2) {
-            crc2.restore();
-            let radiusSmiley = 20;
-            let smiley = new Path2D();
-            smiley.arc(0, 0, radiusSmiley, 0, 2 * Math.PI);
-            crc2.save();
-            crc2.translate(this.position.x, this.position.y);
-            crc2.fillStyle = "yellow";
-            crc2.fill();
-            console.log("smiley");
+        draw() {
+            this.crc2.restore();
+            let radiusSmiley = 30;
+            this.crc2.save();
+            this.crc2.translate(this.position.x, this.position.y);
+            this.crc2.fillStyle = 'orange';
+            this.crc2.beginPath();
+            this.crc2.arc(0, 0, radiusSmiley, 0, 2 * Math.PI);
+            this.crc2.closePath();
+            this.crc2.fill();
+            // console.log("Mitarbeiter");
         }
         move() {
         }

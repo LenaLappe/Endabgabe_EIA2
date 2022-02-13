@@ -1,31 +1,31 @@
 namespace Endabgabe{
 
     export class Staff extends Drawable implements Movable {
-        startMood: number;
+        currentMood: MoodStaff;
         workspace: number;
 
         constructor () {
             super();
+            this.position = new Vector(150, 100);
         }
 
-        public draw(crc2: CanvasRenderingContext2D): void {
-            crc2.restore()
+        public draw(): void {
+            this.crc2.restore()
 
-            let radiusSmiley: number = 20;
-            let smiley: Path2D = new Path2D();
+            let radiusSmiley: number = 30;
 
-            smiley.arc(0, 0, radiusSmiley, 0, 2 * Math.PI);
+            this.crc2.save();
+            this.crc2.translate(this.position.x, this.position.y);
+            
+            this.crc2.fillStyle = 'orange';
 
-            crc2.save();
-            crc2.translate(this.position.x, this.position.y);
+            this.crc2.beginPath()
+            this.crc2.arc(0, 0, radiusSmiley, 0, 2 * Math.PI);
+            this.crc2.closePath()
 
-            crc2.fillStyle = "yellow";
-            crc2.fill();
+            this.crc2.fill();
 
-            console.log("smiley");
-
-
-
+            // console.log("Mitarbeiter");
         }
 
         public move(): void {
